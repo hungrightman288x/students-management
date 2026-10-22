@@ -8,10 +8,10 @@ class Date{
         Date(int = 1, int = 1, int = 2000);
         ~Date();
 
-        int getDay();
-        int getMonth();
-        int getYear();
+        int getDay() const;
+        int getMonth() const;
+        int getYear() const;
 
         int dayspermonth(const int&, const int&) const;
-        string to_string(); //Bao gồm cả chuẩn hóa ngày tháng năm
+        string to_string() const; //Bao gồm cả chuẩn hóa ngày tháng năm
 };
