@@ -20,7 +20,7 @@ class Enrollment {
 
         string GetStudentId() const;
         string GetCourseSectionId() const;
-        string GetEnrollmentID() const;
+        string GetID() const;
 
         const Date& GetEnrollmentDate() const;
 

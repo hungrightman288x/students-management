@@ -18,7 +18,7 @@ CourseSection::CourseSection(string id, string subjectId,
     }
 }
 
-string CourseSection::GetCourseSectionId() const {
+string CourseSection::GetID() const {
     return this->CourseSectionID;
 }
 

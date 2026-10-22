@@ -12,7 +12,7 @@ class Subject {
     public:
         Subject(string = "", string = "", int = 0);
 
-        string GetSubjectId() const;
+        string GetID() const;
         string GetSubjectName() const;
         int GetCredits() const;
 

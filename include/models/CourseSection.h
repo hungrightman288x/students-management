@@ -15,7 +15,7 @@ class CourseSection {
         CourseSection(string = "", string = "", string = "",
                       int = 0, int = 0);
 
-        string GetCourseSectionId() const;
+        string GetID() const;
         string GetSubjectId() const;
         string GetTeacherId() const;
 

@@ -11,7 +11,7 @@ Subject::Subject(string id, string name, int credits)
     }
 }
 
-string Subject::GetSubjectId() const {
+string Subject::GetID() const {
     return this->SubjectID;
 }
 

@@ -10,7 +10,7 @@ Student::Student(string id, string name, int day, int month,
       DateOfBirth(day, month, year),
       email(email) {}
 
-string Student::GetStudentId() const {
+string Student::GetID() const {
     return this->StudentID;
 }
 

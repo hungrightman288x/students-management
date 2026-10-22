@@ -20,7 +20,7 @@ string Enrollment::GetCourseSectionId() const {
     return this->CourseSectionID;
 }
 
-string Enrollment::GetEnrollmentID() const {
+string Enrollment::GetID() const {
     return this->EnrollmentID;
 }
 

@@ -10,7 +10,7 @@ Teacher::Teacher(string id, string name, int day, int month,
       DateOfBirth(day, month, year),
       email(email) {}
 
-string Teacher::GetTeacherId() const {
+string Teacher::GetID() const {
     return this->TeacherID;
 }
 

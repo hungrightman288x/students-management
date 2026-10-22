@@ -15,7 +15,7 @@ class Student {
         Student(string = "", string = "", int = 1, int = 1,
                 int = 2000, string = "");
 
-        string GetStudentId() const;
+        string GetID() const;
         string GetFullName() const;
         string GetEmail() const;
 
