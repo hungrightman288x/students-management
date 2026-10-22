@@ -7,7 +7,7 @@ using namespace std;
 Account::Account(string user, string password, Role role)
     : UserName(user), Password(password), UserRole(role) {}
 
-string Account::GetUserName() const {
+string Account::GetID() const {
     return this->UserName;
 }
 
@@ -27,7 +27,7 @@ void Account::ChangePassword(const string& pass) {
     this->Password = pass;
 }
 
-void Account::DisplayInfoAcc() const {
+void Account::DisplayInfo() const {
     cout << "UserName: " << this->UserName << endl;
 
     cout << "Role: ";

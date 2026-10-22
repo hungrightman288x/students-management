@@ -13,11 +13,11 @@ class Account {
     public:
         Account(string = "", string = "", Role = STUDENT);
 
-        string GetUserName() const;
+        string GetID() const;
         Role GetUserRole() const;
 
         bool CheckPassword(const string& pass) const;
         void ChangePassword(const string& pass);
 
-        void DisplayInfoAcc() const;
+        void DisplayInfo() const;
 };
