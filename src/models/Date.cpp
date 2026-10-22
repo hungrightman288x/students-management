@@ -3,6 +3,11 @@
 #include "models/Date.h"
 using namespace std;
 Date::Date(int day, int month, int year) : day(day), month(month), year(year){
+    //Hàm này kiểm tra tháng, năm trước khi trả số ngày
+    int maxDay = dayspermonth(month, year);
+    if (day < 1 || day > maxDay){
+        throw std::invalid_argument("Ngay khong hop le");
+    }
 }
 Date::~Date(){}
 int Date::getDay(){
@@ -15,25 +20,19 @@ int Date::getYear(){
     return this->year;
 }
 int Date::dayspermonth(const int& month, const int& year) const{
-    int day;
-    if(month == 4 || month == 6 || month == 9 || month == 11){
-        day = 30;
-        return day;
+    if (month < 1 || month > 12 || year < 1 || year > 9999) {
+        throw std::invalid_argument("Thang hoac nam khong hop le");
     }
-    if(year % 400 == 0 && year % 100 != 0 && year % 4 == 0){
-        if(month == 2){
-            day = 29;
-            return day;
-        }
+    if (month == 2){
+        bool leapYear = year % 400 == 0 ||
+                        (year % 4 == 0 && year % 100 != 0);
+
+        return leapYear ? 29 : 28;
     }
-    else{
-        if(month == 2){
-            day = 28;
-            return day;
-        }
+    if (month == 4 || month == 6 || month == 9 || month == 11){
+        return 30;
     }
-    day = 31;
-    return day;
+    return 31;
 }
 string Date::to_string(){
     stringstream ss;
