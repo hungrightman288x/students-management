@@ -1,6 +1,7 @@
 
 #include "models/CourseSection.h"
 #include <stdexcept>
+#include <iostream>
 using namespace std;
 
 CourseSection::CourseSection(string id, string subjectId,
@@ -56,4 +57,14 @@ void CourseSection::DecreaseStudentNumber() {
     }
 
     this->StudentNumber--;
+}
+
+
+
+void CourseSection::DisplayInfo() const {
+    cout << "Course Section ID: " << this->CourseSectionID << endl;
+    cout << "Subject ID: " << this->SubjectId << endl;
+    cout << "Teacher ID: " << this->TeacherId << endl;
+    cout << "Max Students: " << this->MaxStudents << endl;
+    cout << "Student Number: " << this->StudentNumber << endl;
 }

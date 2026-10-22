@@ -1,6 +1,7 @@
 
 #include "models/Subject.h"
 #include <stdexcept>
+#include <iostream>
 using namespace std;
 
 Subject::Subject(string id, string name, int credits)
@@ -25,4 +26,10 @@ int Subject::GetCredits() const {
 
 void Subject::SetSubjectName(const string& name) {
     this->SubjectName = name;
+}
+
+void Subject::DisplayInfo() const {
+    cout << "Subject ID: " << this->SubjectID << endl;
+    cout << "Subject Name: " << this->SubjectName << endl;
+    cout << "Credits: " << this->Credits << endl;
 }

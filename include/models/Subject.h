@@ -17,4 +17,5 @@ class Subject {
         int GetCredits() const;
 
         void SetSubjectName(const string& name);
+        void DisplayInfo() const;
 };

@@ -1,5 +1,6 @@
 
 #include "models/Enrollment.h"
+#include <iostream>
 using namespace std;
 
 Enrollment::Enrollment(string id, string studentId,
@@ -34,4 +35,16 @@ Grade& Enrollment::GetScore() {
 
 const Grade& Enrollment::GetScore() const {
     return this->Score;
+}
+
+
+void Enrollment::DisplayInfo() const {
+    cout << "Enrollment ID: " << this->EnrollmentID << endl;
+    cout << "Student ID: " << this->StudentID << endl;
+    cout << "Course Section ID: " << this->CourseSectionID << endl;
+    cout << "Enrollment Date: " << this->EnrollmentDate.to_string() << endl;
+    cout << "Attendance: " << this->Score.GetAttendance() << endl;
+    cout << "Midterm: " << this->Score.GetMidterm() << endl;
+    cout << "Final: " << this->Score.GetFinal() << endl;
+    cout << "Total: " << this->Score.GetTotal() << endl;
 }

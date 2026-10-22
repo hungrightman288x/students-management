@@ -26,4 +26,6 @@ class CourseSection {
 
         void IncreaseStudentNumber();
         void DecreaseStudentNumber();
+
+        void DisplayInfo() const;
 };

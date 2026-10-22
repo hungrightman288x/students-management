@@ -26,4 +26,6 @@ class Enrollment {
 
         Grade& GetScore();
         const Grade& GetScore() const;
+
+        void DisplayInfo() const;
 };
