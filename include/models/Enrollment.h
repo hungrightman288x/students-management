@@ -3,24 +3,23 @@
 #include <string>
 #include "models/Date.h"
 #include "models/Grade.h"
-using namespace std;
 
 class Enrollment {
     private:
-        string EnrollmentID;
-        string StudentID;
-        string CourseSectionID;
+        std::string EnrollmentID;
+        std::string StudentID;
+        std::string CourseSectionID;
         Date EnrollmentDate;
         Grade Score;
 
     public:
-        Enrollment(string = "", string = "", string = "",
+        Enrollment(std::string = "", std::string = "", std::string = "",
                    int = 1, int = 1, int = 2000,
                    float = 0, float = 0, float = 0);
 
-        string GetStudentId() const;
-        string GetCourseSectionId() const;
-        string GetID() const;
+        std::string GetStudentId() const;
+        std::string GetCourseSectionId() const;
+        std::string GetID() const;
 
         const Date& GetEnrollmentDate() const;
 

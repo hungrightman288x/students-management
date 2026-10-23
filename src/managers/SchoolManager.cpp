@@ -356,3 +356,27 @@ const Teacher& SchoolManager::GetOwnTeacherProfile() const {
     RequireRole(TEACHER);
     return *Teachers.FindByID(GetCurrentAccount()->GetProfileID());
 }
+
+std::vector<AcademicResult> SchoolManager::GetAcademicResults() const {
+    std::vector<AcademicResult> result;
+    for (const auto* item : GetVisibleEnrollments()) {
+        const auto* section = Sections.FindByID(item->GetCourseSectionId());
+        const auto* subject = Subjects.FindByID(section->GetSubjectId());
+        const auto* student = Students.FindByID(item->GetStudentId());
+        const auto* teacher = Teachers.FindByID(section->GetTeacherId());
+        result.push_back({item->GetID(), student->GetID(), student->GetFullName(), section->GetID(),
+            subject->GetID(), subject->GetSubjectName(), teacher->GetFullName(), subject->GetCredits(),
+            item->GetEnrollmentDate(), item->GetScore()});
+    }
+    return result;
+}
+
+std::vector<TeachingSection> SchoolManager::GetTeachingSectionDetails() const {
+    std::vector<TeachingSection> result;
+    for (const auto* section : GetTeachingSections()) {
+        const auto* subject = Subjects.FindByID(section->GetSubjectId());
+        result.push_back({section->GetID(), subject->GetID(), subject->GetSubjectName(), subject->GetCredits(),
+            section->GetStudentNumber(), section->GetMaxStudents()});
+    }
+    return result;
+}

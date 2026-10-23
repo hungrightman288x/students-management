@@ -7,6 +7,19 @@
 #include "managers/SubjectManager.h"
 #include "managers/TeacherManager.h"
 
+struct AcademicResult {
+    std::string EnrollmentID, StudentID, StudentName, SectionID;
+    std::string SubjectID, SubjectName, TeacherName;
+    int Credits;
+    Date RegistrationDate;
+    Grade Score;
+};
+
+struct TeachingSection {
+    std::string ID, SubjectID, SubjectName;
+    int Credits, StudentNumber, MaxStudents;
+};
+
 // Coordinates cross-manager rules and permissions. UI code mutates data here.
 class SchoolManager {
     std::string DataDirectory;
@@ -69,6 +82,8 @@ public:
     void SetGrade(const std::string& enrollmentID, const Grade& grade);
     std::vector<const Enrollment*> GetVisibleEnrollments() const;
     std::vector<const CourseSection*> GetTeachingSections() const;
+    std::vector<AcademicResult> GetAcademicResults() const;
+    std::vector<TeachingSection> GetTeachingSectionDetails() const;
     const Student& GetOwnStudentProfile() const;
     const Teacher& GetOwnTeacherProfile() const;
 };

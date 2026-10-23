@@ -2,25 +2,25 @@
 #pragma once
 #include <string>
 #include "models/Date.h"
-using namespace std;
 
 class Student {
     private:
-        string StudentID;
-        string FullName;
+        std::string StudentID;
+        std::string FullName;
         Date DateOfBirth;
-        string email;
+        std::string email;
 
     public:
-        Student(string = "", string = "", int = 1, int = 1,
-                int = 2000, string = "");
+        Student(std::string = "", std::string = "", int = 1, int = 1,
+                int = 2000, std::string = "");
 
-        string GetID() const;
-        string GetFullName() const;
-        string GetEmail() const;
+        std::string GetID() const;
+        std::string GetFullName() const;
+        std::string GetEmail() const;
+        const Date& GetDateOfBirth() const;
 
-        void SetEmail(string email);
-        void SetFullName(string name);
+        void SetEmail(std::string email);
+        void SetFullName(std::string name);
 
         void DisplayInfo() const;
 };

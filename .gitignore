@@ -3,3 +3,5 @@ build/
 *.o
 *.obj
 *.out
+data-local/
+.student-management-save/

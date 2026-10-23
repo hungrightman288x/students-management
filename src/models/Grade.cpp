@@ -1,6 +1,7 @@
 
 #include "models/Grade.h"
 #include <stdexcept>
+#include <cmath>
 using namespace std;
 
 Grade::Grade(float att, float mid, float final)
@@ -28,7 +29,7 @@ float Grade::GetTotal() const {
 }
 
 void Grade::SetAttendance(float att) {
-    if (att < 0 || att > 10) {
+    if (!std::isfinite(att) || att < 0 || att > 10) {
         throw invalid_argument("Diem chuyen can khong hop le");
     }
     this->Attendance = att;
@@ -36,7 +37,7 @@ void Grade::SetAttendance(float att) {
 }
 
 void Grade::SetMidterm(float mid) {
-    if (mid < 0 || mid > 10) {
+    if (!std::isfinite(mid) || mid < 0 || mid > 10) {
         throw invalid_argument("Diem giua ky khong hop le");
     }
     this->Midterm = mid;
@@ -44,7 +45,7 @@ void Grade::SetMidterm(float mid) {
 }
 
 void Grade::SetFinal(float final) {
-    if (final < 0 || final > 10) {
+    if (!std::isfinite(final) || final < 0 || final > 10) {
         throw invalid_argument("Diem cuoi ky khong hop le");
     }
     this->Final = final;

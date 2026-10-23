@@ -1,28 +1,27 @@
 
 #pragma once
 #include <string>
-using namespace std;
 
 class CourseSection {
     private:
-        string CourseSectionID;
-        string SubjectId;
-        string TeacherId;
+        std::string CourseSectionID;
+        std::string SubjectId;
+        std::string TeacherId;
         int MaxStudents;
         int StudentNumber;
 
     public:
-        CourseSection(string = "", string = "", string = "",
+        CourseSection(std::string = "", std::string = "", std::string = "",
                       int = 0, int = 0);
 
-        string GetID() const;
-        string GetSubjectId() const;
-        string GetTeacherId() const;
+        std::string GetID() const;
+        std::string GetSubjectId() const;
+        std::string GetTeacherId() const;
 
         int GetMaxStudents() const;
         int GetStudentNumber() const;
 
-        void SetTeacher(const string& teacherID);
+        void SetTeacher(const std::string& teacherID);
 
         void IncreaseStudentNumber();
         void DecreaseStudentNumber();

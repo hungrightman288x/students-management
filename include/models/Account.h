@@ -1,23 +1,28 @@
 
 #pragma once
 #include <string>
+#include <iosfwd>
 #include "models/Role.h"
-using namespace std;
 
 class Account {
     private:
-        string UserName;
-        string Password;
+        std::string UserName;
+        std::string Password;
         Role UserRole;
+        std::string ProfileID;
+        friend void WriteRecord(std::ostream&, const Account&);
 
     public:
-        Account(string = "", string = "", Role = STUDENT);
+        Account(std::string = "", std::string = "", Role = STUDENT, std::string = "");
 
-        string GetID() const;
+        std::string GetID() const;
         Role GetUserRole() const;
+        std::string GetProfileID() const;
+        bool HasPassword() const;
+        void SetProfile(Role role, const std::string& profileID);
 
-        bool CheckPassword(const string& pass) const;
-        void ChangePassword(const string& pass);
+        bool CheckPassword(const std::string& pass) const;
+        void ChangePassword(const std::string& pass);
 
         void DisplayInfo() const;
 };

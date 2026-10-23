@@ -28,6 +28,11 @@ void Subject::SetSubjectName(const string& name) {
     this->SubjectName = name;
 }
 
+void Subject::SetCredits(int credits) {
+    if (credits < 0) throw invalid_argument("So tin chi khong hop le");
+    Credits = credits;
+}
+
 void Subject::DisplayInfo() const {
     cout << "Subject ID: " << this->SubjectID << endl;
     cout << "Subject Name: " << this->SubjectName << endl;
