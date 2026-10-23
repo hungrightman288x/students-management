@@ -276,7 +276,11 @@ INT_PTR CALLBACK Form::Procedure(HWND window, UINT message, WPARAM wParam, LPARA
                 return TRUE;
             }
             if (LOWORD(wParam) == IDCANCEL) { EndDialog(window, IDCANCEL); return TRUE; }
-            if (HIWORD(wParam) == CBN_SELCHANGE) self->UpdateProfileChoices();
+            if (HIWORD(wParam) == CBN_SELCHANGE) {
+                int index = static_cast<int>(LOWORD(wParam)) - 2000;
+                if (index >= 0 && index < static_cast<int>(self->Fields.size()) && self->Fields[index].Key == L"role")
+                    self->UpdateProfileChoices();
+            }
             return FALSE;
         case WM_CTLCOLORDLG: return reinterpret_cast<INT_PTR>(GetStockObject(WHITE_BRUSH));
         case WM_CTLCOLORSTATIC: {

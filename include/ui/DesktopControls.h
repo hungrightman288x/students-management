@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "models/Date.h"
+#include "models/Role.h"
 
 namespace desktop {
 constexpr COLORREF Background = RGB(247, 249, 252);
