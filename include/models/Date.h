@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-using namespace std;
 class Date{
     private:
         int day, month, year;
@@ -11,7 +10,10 @@ class Date{
         int getDay() const;
         int getMonth() const;
         int getYear() const;
+        void SetDay(int value);
+        void SetMonth(int value);
+        void SetYear(int value);
 
         int dayspermonth(const int&, const int&) const;
-        string to_string() const; //Bao gồm cả chuẩn hóa ngày tháng năm
+        std::string to_string() const; //Bao gồm cả chuẩn hóa ngày tháng năm
 };
