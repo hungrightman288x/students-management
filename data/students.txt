@@ -1,3 +1,0 @@
-# student-management v1 - fictional sample data
-"S001" "Nguyen Van An" 15 8 2005 "an@example.test"
-"S002" "Tran Thi Binh" 20 4 2005 "binh@example.test"

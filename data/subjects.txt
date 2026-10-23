@@ -1,3 +1,0 @@
-# student-management v1
-"CS101" "Lap trinh C++" 3
-"CS102" "Cau truc du lieu" 4

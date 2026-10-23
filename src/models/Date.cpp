@@ -14,10 +14,6 @@ Date::Date(int day, int month, int year) : day(day), month(month), year(year){
 
 Date::~Date(){}
 
-void Date::SetDay(int value) { *this = Date(value, month, year); }
-void Date::SetMonth(int value) { *this = Date(day, value, year); }
-void Date::SetYear(int value) { *this = Date(day, month, value); }
-
 int Date::getDay() const{
     return this->day;
 }

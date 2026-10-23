@@ -1,21 +1,21 @@
 
 #pragma once
 #include <string>
+using namespace std;
 
 class Subject {
     private:
-        std::string SubjectID;
-        std::string SubjectName;
+        string SubjectID;
+        string SubjectName;
         int Credits;
 
     public:
-        Subject(std::string = "", std::string = "", int = 0);
+        Subject(string = "", string = "", int = 0);
 
-        std::string GetID() const;
-        std::string GetSubjectName() const;
+        string GetID() const;
+        string GetSubjectName() const;
         int GetCredits() const;
 
-        void SetSubjectName(const std::string& name);
-        void SetCredits(int credits);
+        void SetSubjectName(const string& name);
         void DisplayInfo() const;
 };

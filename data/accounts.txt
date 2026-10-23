@@ -1,6 +1,0 @@
-# student-management v1 - DEMO accounts only
-"admin" "admin123" 2 ""
-"teacher1" "teacher123" 1 "T001"
-"teacher2" "teacher123" 1 "T002"
-"student1" "student123" 0 "S001"
-"student2" "student123" 0 "S002"

@@ -22,8 +22,6 @@ string Student::GetEmail() const {
     return this->email;
 }
 
-const Date& Student::GetDateOfBirth() const { return DateOfBirth; }
-
 void Student::SetEmail(string email) {
     this->email = email;
 }

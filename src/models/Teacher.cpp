@@ -22,8 +22,6 @@ string Teacher::GetEmail() const {
     return this->email;
 }
 
-const Date& Teacher::GetDateOfBirth() const { return DateOfBirth; }
-
 void Teacher::SetFullName(const string& name) {
     this->FullName = name;
 }

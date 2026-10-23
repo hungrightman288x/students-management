@@ -1,7 +1,7 @@
 
 #pragma once
 
-enum Role : int {
+enum Role {
     STUDENT,
     TEACHER,
     ADMIN

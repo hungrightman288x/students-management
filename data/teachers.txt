@@ -1,3 +1,0 @@
-# student-management v1 - fictional sample data
-"T001" "Le Minh Chau" 10 3 1985 "chau@example.test"
-"T002" "Pham Duc Dung" 25 11 1980 "dung@example.test"
