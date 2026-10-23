@@ -37,6 +37,7 @@ if(WIN32)
     add_executable(student_management_gui WIN32
         src/desktop_main.cpp src/ui/DesktopApp.cpp src/ui/DesktopControls.cpp resources/desktop.rc)
     target_compile_definitions(student_management_gui PRIVATE UNICODE _UNICODE NOMINMAX)
+    target_include_directories(student_management_gui PRIVATE resources)
     target_link_libraries(student_management_gui PRIVATE student_core comctl32 uxtheme comdlg32 gdi32 user32 shell32)
     if(MINGW)
         target_link_options(student_management_gui PRIVATE -municode)

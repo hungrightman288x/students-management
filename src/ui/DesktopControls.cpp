@@ -224,7 +224,7 @@ void Form::Initialize() {
     RECT bounds{0, 0, width, height}; AdjustWindowRectEx(&bounds, GetWindowLongW(Window, GWL_STYLE), FALSE, 0);
     int outerWidth = bounds.right - bounds.left, outerHeight = bounds.bottom - bounds.top;
     HMONITOR monitor = MonitorFromWindow(GetParent(Window), MONITOR_DEFAULTTONEAREST);
-    MONITORINFO info{sizeof(info)}; GetMonitorInfoW(monitor, &info);
+    MONITORINFO info{}; info.cbSize = sizeof(info); GetMonitorInfoW(monitor, &info);
     int x = std::clamp(parent.left + (parent.right - parent.left - outerWidth) / 2, info.rcWork.left, std::max(info.rcWork.left, info.rcWork.right - outerWidth));
     int y = std::clamp(parent.top + (parent.bottom - parent.top - outerHeight) / 2, info.rcWork.top, std::max(info.rcWork.top, info.rcWork.bottom - outerHeight));
     SetWindowPos(Window, nullptr, x, y, outerWidth, outerHeight, SWP_NOZORDER);

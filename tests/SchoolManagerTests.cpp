@@ -168,6 +168,8 @@ void PermissionsAndRoundTrip() {
         Check(system.Login("student2", "new-pass"), "Admin password reset");
         Check(system.GetVisibleEnrollments().size() == 1 && system.GetVisibleEnrollments()[0]->GetID() == "E2", "Student only sees own registration");
         Check(system.GetOwnStudentProfile().GetID() == "S2", "Username maps to explicit profile");
+        auto studentResults = system.GetAcademicResults();
+        Check(studentResults.size() == 1 && studentResults[0].StudentID == "S2" && studentResults[0].SubjectName == "Data structures", "Desktop results include only own course metadata");
         Reject([&] { system.GetStudents(); }, "Student cannot read all profiles");
         Reject([&] { system.GetAccounts(); }, "Student cannot read account list");
         Reject([&] { system.Register("E3", "S2", "C1", Date()); }, "Student cannot register via admin API");
@@ -176,6 +178,7 @@ void PermissionsAndRoundTrip() {
         Check(system.Login("teacher2", "teacher-pass"), "Teacher login");
         Check(system.GetTeachingSections().size() == 1 && system.GetTeachingSections()[0]->GetID() == "C2", "Teacher sees assigned sections");
         Check(system.GetVisibleEnrollments().size() == 1 && system.GetVisibleEnrollments()[0]->GetID() == "E2", "Teacher sees assigned grades");
+        Check(system.GetTeachingSectionDetails().size() == 1 && system.GetTeachingSectionDetails()[0].ID == "C2", "Desktop section metadata respects teacher assignment");
         Reject([&] { system.SetGrade("E1", Grade(10, 10, 10)); }, "Teacher cannot grade another section");
         Reject([&] { system.GetStudents(); }, "Teacher cannot read all profiles");
         Reject([&] { system.RemoveStudent("S1"); }, "Teacher cannot delete student");
@@ -186,6 +189,7 @@ void PermissionsAndRoundTrip() {
         system.ChangeOwnPassword("new-pass", "quoted\"password\\value");
         system.Logout();
         Reject([&] { system.GetVisibleEnrollments(); }, "Logout revokes read access");
+        Reject([&] { system.GetAcademicResults(); }, "Logout revokes desktop result access");
         Check(system.Login("admin", "admin-pass"), "Admin relogin");
         system.UpdateRegistrationDate("E2", Date(24, 10, 2026));
         Check(std::abs(system.GetEnrollments().FindByID("E2")->GetScore().GetTotal() - 7.6f) < 0.0001f, "Registration date update preserves grade");

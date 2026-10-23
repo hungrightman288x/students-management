@@ -207,7 +207,7 @@ void DesktopApp::Build() {
             else Button(L"Chi tiết điểm", DetailID);
             Button(L"Xuất CSV", ExportID);
             if (CurrentPage == Page::Results) Button(L"Giải thích", HelpID);
-            Table = AddControl(WC_LISTVIEWW, L"", WS_TABSTOP | LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER, TableID);
+            Table = AddControl(WC_LISTVIEWW, L"", WS_TABSTOP | LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | LVS_SHAREIMAGELISTS, TableID);
             ListView_SetExtendedListViewStyle(Table, LVS_EX_FULLROWSELECT | LVS_EX_DOUBLEBUFFER | LVS_EX_GRIDLINES | LVS_EX_LABELTIP);
             ListView_SetBkColor(Table, White); ListView_SetTextBkColor(Table, White); ListView_SetTextColor(Table, Ink);
             SetWindowTheme(Table, L"Explorer", nullptr);
@@ -248,7 +248,7 @@ void DesktopApp::Layout() {
     Place(SaveID, Content.right - S(120), S(25), S(120), S(32));
     Place(NoticeID, Content.left, S(77), Content.right - Content.left - S(10), S(25));
     if (CurrentPage == Page::Profile) {
-        int totalWidth = std::min(Content.right - Content.left, S(870));
+        int totalWidth = std::min<int>(Content.right - Content.left, S(870));
         int left = Content.left + (Content.right - Content.left - totalWidth) / 2;
         ProfileBounds = {left, S(116), left + totalWidth, S(560)};
         int profileWidth = S(276), gap = S(20);
@@ -270,10 +270,10 @@ void DesktopApp::Layout() {
     }
     if (Control(AddID)) { Place(AddID, right - S(116), toolbar, S(116), S(34)); right -= S(126); }
     if (Control(DetailID)) { Place(DetailID, right - S(134), toolbar, S(134), S(34)); right -= S(144); }
-    int searchWidth = std::min(S(270), right - Content.left - S(Control(FilterID) ? 240 : 8));
+    int searchWidth = std::min<int>(S(270), right - Content.left - S(Control(FilterID) ? 240 : 8));
     searchWidth = std::max(S(150), searchWidth);
     Place(SearchID, Content.left, toolbar, searchWidth, S(34));
-    if (Control(FilterID)) Place(FilterID, Content.left + searchWidth + S(12), toolbar, std::max(S(140), right - Content.left - searchWidth - S(24)), S(220));
+    if (Control(FilterID)) Place(FilterID, Content.left + searchWidth + S(12), toolbar, std::max<int>(S(140), right - Content.left - searchWidth - S(24)), S(220));
     if (Control(HelpID)) Place(HelpID, Content.right - S(120), S(259), S(120), S(34));
     TableBounds = {Content.left, toolbar + S(52), Content.right, Content.bottom - S(30)};
     Place(TableID, TableBounds.left, TableBounds.top, TableBounds.right - TableBounds.left, TableBounds.bottom - TableBounds.top);
@@ -800,6 +800,9 @@ LRESULT CALLBACK DesktopApp::Procedure(HWND window, UINT message, WPARAM wParam,
                 auto info = reinterpret_cast<MINMAXINFO*>(lParam); info->ptMinTrackSize = {self->S(1040), self->S(720)}; return 0;
             }
             case WM_COMMAND: self->Command(LOWORD(wParam), HIWORD(wParam)); return 0;
+            case DM_GETDEFID:
+                return self->Control(IDOK) ? MAKELRESULT(IDOK, DC_HASDEFID) : 0;
+            case DM_SETDEFID: return 0;
             case WM_NOTIFY: return self->Notify(reinterpret_cast<NMHDR*>(lParam));
             case WM_DRAWITEM: {
                 auto* item = reinterpret_cast<DRAWITEMSTRUCT*>(lParam); int id = static_cast<int>(wParam);
