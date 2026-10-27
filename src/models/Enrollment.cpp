@@ -11,7 +11,16 @@ Enrollment::Enrollment(string id, string studentId,
       StudentID(studentId),
       CourseSectionID(courseSectionId),
       EnrollmentDate(day, month, year),
-      Score(att, mid, final) {}
+      Score(att, mid, final) {
+        if(id.size() != 5 || id.substr(0, 2) != "DK"){
+            throw invalid_argument("Enrollment id phai co dang DKxxx");
+        }
+        for(int i = 2; i < 5; i++){
+            if(id[i] < '0' || id[i] > '9'){
+                throw invalid_argument("Enrollment id phai co dang DKxxx");
+            }
+        }
+      }
 
 string Enrollment::GetStudentId() const {
     return this->StudentID;

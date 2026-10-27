@@ -10,6 +10,14 @@ Subject::Subject(string id, string name, int credits)
     if (credits < 0) {
         throw invalid_argument("So tin chi khong hop le");
     }
+    if(id.size() != 5 || id.substr(0, 2) != "MH"){
+        throw invalid_argument("Ma mon hoc phai co dang MHxxx");
+    }
+    for(int i = 2; i < 5; i++){
+        if(id[i] < '0' || id[i] > '9'){
+            throw invalid_argument("Ma mon hoc phai co dang MHxxx");
+        }
+    }
 }
 
 string Subject::GetID() const {

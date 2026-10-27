@@ -8,7 +8,16 @@ Student::Student(string id, string name, int day, int month,
     : StudentID(id),
       FullName(name),
       DateOfBirth(day, month, year),
-      email(email) {}
+      email(email) {
+        if(id.size() != 5 || id.substr(0, 2) != "SV"){
+            throw invalid_argument("Ma sinh vien co dang SVxxx");
+        }
+        for(int i = 2; i < 5; i++){
+            if(id[i] < '0' || id[i] > '9'){
+                throw invalid_argument("Ba ky tu cuoi phai la int");
+            }
+        }
+      }
 
 string Student::GetID() const {
     return this->StudentID;

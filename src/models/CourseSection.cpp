@@ -12,7 +12,14 @@ CourseSection::CourseSection(string id, string subjectId,
       TeacherId(teacherId),
       MaxStudents(maxStudents),
       StudentNumber(studentNumber) {
-
+    if(id.size() != 6 || id.substr(0, 3) != "LHP"){
+        throw invalid_argument("Coursesection id phai co dang LHPxxx");
+    }
+    for(int i = 3; i < 6; i++){
+        if(id[i] < '0' || id[i] > '9'){
+            throw invalid_argument("Coursesection id phai co dang LHPxxx");
+        }
+    }
     if (maxStudents < 0 || studentNumber < 0 ||
         studentNumber > maxStudents) {
         throw invalid_argument("So luong sinh vien khong hop le");
