@@ -11,4 +11,5 @@ class AccountManager : public Manager<Account>{
     public:
         AccountManager(const string&);
         ~AccountManager();
+        Account* Login(const string&, const string&) const;
 };

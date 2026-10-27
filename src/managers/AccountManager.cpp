@@ -62,3 +62,14 @@ void AccountManager::LoadFromFile() {
         throw runtime_error("Loi khi doc file tai khoan");
     }
 }
+
+Account* AccountManager::Login(const string& username, const string& password) const {
+    Account* found = this->FindByID(username);
+    if(found == nullptr){
+        return nullptr;
+    }
+    if(!found->CheckPassword(password)){
+        return nullptr;
+    }
+    return found;
+}
