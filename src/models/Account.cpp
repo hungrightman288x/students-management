@@ -45,6 +45,9 @@ Account::Account(string user, string password, Role role)
             }
         }
     }
+    if(password == ""){
+        throw invalid_argument("Mat khau khong duoc de trong");
+    }
 }
 
 string Account::GetID() const {
