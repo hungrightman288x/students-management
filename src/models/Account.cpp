@@ -87,6 +87,6 @@ void Account::DisplayInfo() const {
             cout << "ADMIN";
             break;
     }
-
+    cout << "\nPass: " << this->Password;
     cout << endl;
 }
