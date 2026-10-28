@@ -1,0 +1,3 @@
+MH001|Dai so tuyen tinh|3
+MH002|Ky thuat lap trinh|2
+MH003|Xac suat thong ke|2
