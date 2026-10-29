@@ -1,0 +1,10 @@
+MH001|Dai so tuyen tinh|3
+MH002|Ky thuat lap trinh|2
+MH003|Xac suat thong ke|2
+MH004|Cau truc du lieu va giai thuat|3
+MH005|Co so du lieu|3
+MH006|Lap trinh huong doi tuong|3
+MH007|Mang may tinh|3
+MH008|He dieu hanh|3
+MH009|Cong nghe phan mem|3
+MH010|Tri tue nhan tao|3

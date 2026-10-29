@@ -1,0 +1,10 @@
+SV001|Hoang Phuoc Hung|28|08|2007|hoangphuochung288@gmail.com
+SV002|Nguyen Cong Dung|20|12|2007|dung@example.com
+SV003|Tran Thi Mai|15|3|2006|mai@example.com
+SV004|Le Minh Khang|9|7|2006|khang@example.com
+SV005|Pham Ngoc Anh|22|11|2007|anh@example.com
+SV006|Vo Thanh Nam|6|5|2005|nam@example.com
+SV007|Dang Thu Ha|18|9|2006|ha@example.com
+SV008|Bui Quang Huy|3|2|2007|huy@example.com
+SV009|Do Khanh Linh|29|2|2004|linh@example.com
+SV010|Phan Tuan Kiet|12|10|2006|kiet@example.com
