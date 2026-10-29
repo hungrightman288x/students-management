@@ -33,7 +33,7 @@ int main() {
     try{
         TeacherManager teacher("data/teachers.txt");
         Teacher* check = teacher.FindByID("GV001");
-        check->DisplayInfo();
+        teacher.PrintAll();
     }
     catch (const exception& error) {
     cerr << "Loi: " << error.what() << '\n';
