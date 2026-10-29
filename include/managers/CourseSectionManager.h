@@ -1,8 +1,8 @@
 #pragma once
 #include "models/CourseSection.h"
-#include "managers/Manager.h"
 #include "managers/SubjectManager.h"
 #include "managers/TeacherManager.h"
+#include "managers/Manager.h"
 #include <string>
 using namespace std;
 class CourseSectionManager : public Manager<CourseSection>{

@@ -7,44 +7,35 @@ CourseSectionManager::CourseSectionManager(const string& FileName, const Subject
     this->LoadFromFile(subjects, teachers);
 }
 CourseSectionManager::~CourseSectionManager(){}
-
-void CourseSectionManager::LoadFromFile(const SubjectManager& subjects,
-                                       const TeacherManager& teachers){
+void CourseSectionManager::LoadFromFile(const SubjectManager& subjects, const TeacherManager& teachers){
     ifstream file(FileName);
 
-    if (!file.is_open()) {
-        throw runtime_error("Khong mo duoc file: " + FileName);
+    if(!file.is_open()){
+        throw runtime_error("Khong the mo file " + FileName);
     }
-
     string line;
-
-    while (getline(file, line)) {
-        if (!line.empty() && line.back() == '\r') {
+    while(getline(file, line)){
+        if(!line.empty() && line.back() == '\r'){
             line.pop_back();
         }
-
-        if (line.empty()) {
+        if(line.empty()){
             continue;
         }
 
         string CourseSectionID, SubjectID, TeacherID;
-        string MaxStudentsText, StudentNumberText;
+        string MaxStudentText, StudentNumberText;
         stringstream row(line);
 
-        if (!getline(row, CourseSectionID, '|') ||
-            !getline(row, SubjectID, '|') ||
-            !getline(row, TeacherID, '|') ||
-            !getline(row, MaxStudentsText, '|') ||
-            !getline(row, StudentNumberText) ||
-            StudentNumberText.find('|') != string::npos) {
+        if( !getline(row, CourseSectionID, '|') || !getline(row, SubjectID, '|') || !getline(row, TeacherID, '|') ||
+            !getline(row, MaxStudentText, '|') || !getline(row, StudentNumberText) || StudentNumberText.find('|') != string::npos)
+        {
             throw invalid_argument("Dong lop hoc phan khong dung dinh dang");
         }
 
-        size_t MaxStudentsEnd = 0, StudentNumberEnd = 0;
-        int MaxStudents = stoi(MaxStudentsText, &MaxStudentsEnd);
+        size_t MaxStudentEnd = 0, StudentNumberEnd = 0;
+        int MaxStudent = stoi(MaxStudentText, &MaxStudentEnd);
         int StudentNumber = stoi(StudentNumberText, &StudentNumberEnd);
-
-        if (MaxStudentsEnd != MaxStudentsText.size() ||
+        if (MaxStudentEnd != MaxStudentText.size() ||
             StudentNumberEnd != StudentNumberText.size()) {
             throw invalid_argument("Suc chua va si so khong duoc co ky tu thua");
         }
@@ -57,11 +48,9 @@ void CourseSectionManager::LoadFromFile(const SubjectManager& subjects,
             throw invalid_argument("Ma giang vien khong ton tai: " + TeacherID);
         }
 
-        CourseSection* section = new CourseSection(
-            CourseSectionID, SubjectID, TeacherID, MaxStudents, StudentNumber
-        );
+        CourseSection* section = new CourseSection(CourseSectionID, SubjectID, TeacherID, MaxStudent, StudentNumber);
 
-        if (!Add(section)) {
+        if (!Add(section)){
             delete section;
             throw invalid_argument("Trung ma lop hoc phan: " + CourseSectionID);
         }
