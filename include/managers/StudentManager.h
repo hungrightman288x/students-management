@@ -7,7 +7,8 @@ class StudentManager : public Manager<Student>{
     private:
         string FileName;
         void LoadFromFile();
-    public:
+        public:
+        void SaveToFile() const;
         StudentManager(const string&);
         ~StudentManager();
 };

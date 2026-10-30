@@ -17,6 +17,7 @@ class Teacher {
 
         string GetID() const;
         string GetFullName() const;
+        const Date& GetDateOfBirth() const;
         string GetEmail() const;
 
         void SetFullName(const string& name);

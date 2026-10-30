@@ -7,7 +7,8 @@ class SubjectManager : public Manager<Subject>{
     private:
         string FileName;
         void LoadFromFile();
-    public:
+        public:
+        void SaveToFile() const;
         SubjectManager(const string&);
         ~SubjectManager();
 };

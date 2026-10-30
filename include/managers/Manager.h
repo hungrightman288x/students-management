@@ -23,6 +23,9 @@ public:
 
     void PrintByID(const string& id) const;
     void PrintAll() const;
+    const unordered_map<string, T*>& GetAll() const {
+        return this->List;
+    }
 };
 
 #endif

@@ -60,3 +60,28 @@ void CourseSectionManager::LoadFromFile(const SubjectManager& subjects, const Te
         throw runtime_error("Loi khi doc file lop hoc phan");
     }
 }
+
+
+void CourseSectionManager::SaveToFile() const {
+    ofstream file(this->FileName);
+
+    if (!file.is_open()) {
+        throw runtime_error("Khong the mo file " + FileName);
+    }
+
+    for (const auto& pair : this->List) {
+        const CourseSection* section = pair.second;
+
+        file << section->GetID() << "|"
+             << section->GetSubjectId() << "|"
+             << section->GetTeacherId() << "|"
+             << section->GetMaxStudents() << "|"
+             << section->GetStudentNumber() << "\n";
+    }
+
+    file.flush();
+
+    if (!file) {
+        throw runtime_error("Loi khi ghi file lop hoc phan");
+    }
+}

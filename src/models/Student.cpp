@@ -45,3 +45,8 @@ void Student::DisplayInfo() const {
     cout << "Date of Birth: " << this->DateOfBirth.to_string() << endl;
     cout << "Email: " << this->email << endl;
 }
+
+// Student.cpp
+const Date& Student::GetDateOfBirth() const {
+    return this->DateOfBirth;
+}

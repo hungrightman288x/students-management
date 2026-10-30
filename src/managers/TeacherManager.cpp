@@ -64,3 +64,29 @@ void TeacherManager::LoadFromFile(){
         throw runtime_error("Loi khi doc file giang vien");
     }
 }
+
+
+void TeacherManager::SaveToFile() const {
+    ofstream file(this->FileName);
+
+    if (!file.is_open()) {
+        throw runtime_error("Khong the mo file " + FileName);
+    }
+
+    for (const auto& pair : this->List) {
+        const Teacher* teacher = pair.second;
+
+        file << teacher->GetID() << "|"
+             << teacher->GetFullName() << "|"
+             << teacher->GetDateOfBirth().getDay() << "|"
+             << teacher->GetDateOfBirth().getMonth() << "|"
+             << teacher->GetDateOfBirth().getYear() << "|"
+             << teacher->GetEmail() << "\n";
+    }
+
+    file.flush();
+
+    if (!file) {
+        throw runtime_error("Loi khi ghi file giang vien");
+    }
+}

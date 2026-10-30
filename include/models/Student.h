@@ -21,6 +21,8 @@ class Student {
 
         void SetEmail(string email);
         void SetFullName(string name);
+        
+        const Date& GetDateOfBirth() const;
 
         void DisplayInfo() const;
 };

@@ -9,7 +9,8 @@ class CourseSectionManager : public Manager<CourseSection>{
     private:
         string FileName;
         void LoadFromFile(const SubjectManager&, const TeacherManager&);
-    public:
+        public:
+        void SaveToFile() const;
         CourseSectionManager(const string&, const SubjectManager&, const TeacherManager&);
         ~CourseSectionManager();
 };

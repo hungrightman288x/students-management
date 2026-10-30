@@ -58,3 +58,26 @@ void SubjectManager::LoadFromFile(){
         throw runtime_error("Loi khi doc file mon hoc");
     }
 }
+
+
+void SubjectManager::SaveToFile() const {
+    ofstream file(this->FileName);
+
+    if (!file.is_open()) {
+        throw runtime_error("Khong the mo file " + FileName);
+    }
+
+    for (const auto& pair : this->List) {
+        const Subject* subject = pair.second;
+
+        file << subject->GetID() << "|"
+             << subject->GetSubjectName() << "|"
+             << subject->GetCredits() << "\n";
+    }
+
+    file.flush();
+
+    if (!file) {
+        throw runtime_error("Loi khi ghi file mon hoc");
+    }
+}
